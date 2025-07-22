@@ -6,14 +6,12 @@ type Props = {
     typingSpeed?: number;
     deletingSpeed?: number;
     pauseTime?: number;
-    loop?: boolean;
 }
 export default function TypingEffect({
     texts,
     typingSpeed = 100,
     deletingSpeed = 50,
     pauseTime = 2000,
-    loop = true
 }: Props) {
     const [displayText, setDisplayText] = useState("");
     const [textIndex, setTextIndex] = useState(0);
