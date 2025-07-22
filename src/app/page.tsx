@@ -1,6 +1,6 @@
 import { BiLogoVisualStudio } from "react-icons/bi";
 import TypingEffect from "./components/typingEffect";
-import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript, SiVsco } from "react-icons/si";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript} from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
