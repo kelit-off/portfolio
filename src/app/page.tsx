@@ -77,7 +77,6 @@ export default function Home() {
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 					{cardLanguages.map((language, index) => {
 						const Icon = language.icon;
-						console.log(language)
 						return (
 						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
 							<Icon className="text-4xl" style={{ color: language.color }} />
