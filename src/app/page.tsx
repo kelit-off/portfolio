@@ -1,103 +1,141 @@
-import Image from "next/image";
+import { BiLogoVisualStudio } from "react-icons/bi";
+import TypingEffect from "./components/typingEffect";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiReact, SiTypescript, SiVsco } from "react-icons/si";
+import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+	const cardLanguages = [
+		{ name: "JavaScript", icon: SiJavascript, color: "" },
+		{ name: "TypeScript", icon: SiTypescript, color: "" },
+		{ name: "React", icon: SiReact, color: "" },
+		{ name: "Node.js", icon: SiNodedotjs, color: "" },
+		{ name: "Laravel", icon: SiLaravel, color: "" },
+		{ name: "PHP", icon: SiPhp, color: ""},
+		{ name: "MySQL", icon: SiMysql, color: "" },
+	]
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	const cardTools = [
+		{ name: "Visual Studio Code", icon: BiLogoVisualStudio, color: "" },
+		{ name: "PostMan", icon: SiPostman, color: ""},
+		{ name: "Git", icon: SiGit, color: "" },
+	]
+
+	const cardProjets = [
+		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
+		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "", linkGitHub: "" },
+		{ name: "MVC" , image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
+	]
+	return (
+		<>
+			<header className="shadow-md">
+				<div className="container mx-auto px-4 py-6">
+					<h1 className="text-3xl font-bold text-gray-800">Théo Killian</h1>
+				</div>
+			</header>
+
+			<main className="container mx-auto px-4 py-10 space-y-16">
+				{/* Hero */}
+				<section className="flex flex-col md:flex-row items-center gap-10">
+					<div className="space-y-4">
+						<h2 className="text-xl text-gray-600">Bonjour à toi! <span className="inline-block text-4xl animate-bounce">👋🏻</span></h2>
+						<h1 className="text-4xl font-bold text-gray-900">Je suis <span className="uppercase text-blue-600">Théo Killian</span></h1>
+						<div className="text-lg text-gray-700">
+							<TypingEffect
+							texts={['Développeur FullStack', 'Développeur React', 'Développeur Laravel']}
+							typingSpeed={150}
+							deletingSpeed={150}
+							pauseTime={150}
+							loop={true}
+							/>
+						</div>
+					</div>
+					<div className="w-1/2">
+					{/* Place ton image ici */}
+					</div>
+				</section>
+
+				{/* À propos */}
+				<section>
+					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Je me présente</h2>
+					<div className="space-y-4 text-gray-700">
+						<p>J'ai commencé la programmation vers l'âge de 15 ans...</p>
+						<p>Pour approfondir mes compétences...</p>
+						<p>
+							Ce moteur de recherche s'appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
+							<a className="text-blue-500 hover:underline" href="https://github.com/orgs/Fulgure/repositories" target="_blank" rel="noreferrer">
+							GitHub
+							</a>.
+						</p>
+					</div>
+				</section>
+
+				{/* Compétences */}
+				<section>
+					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes compétences</h2>
+					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+					{cardLanguages.map((language, index) => {
+						const Icon = language.icon;
+						return (
+						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
+							<Icon className={"text-4xl text-["+language.color+"]"} />
+							<span className="text-sm font-medium text-gray-700">{language.name}</span>
+						</div>
+						);
+					})}
+					</div>
+				</section>
+
+				{/* Outils */}
+				<section>
+					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes outils</h2>
+					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+					{cardTools.map((tool, index) => {
+						const Icon = tool.icon;
+						return (
+						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
+							<Icon className="text-4xl text-orange-500" />
+							<span className="text-sm font-medium text-gray-700">{tool.name}</span>
+						</div>
+						);
+					})}
+					</div>
+				</section>
+
+				{/* GitHub Calendar */}
+				<section>
+					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Mes jours de code</h2>
+					<GitHubCalendar username="kelit-off" blockSize={15} blockMargin={5} fontSize={16} />
+				</section>
+
+				{/* Projets */}
+				<section>
+					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes projets</h2>
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+					{cardProjets.map((projet, index) => (
+						<div key={index} className="bg-white p-6 rounded-2xl shadow-md space-y-3">
+							<h3 className="text-xl font-semibold text-gray-900">{projet.name}</h3>
+							<p className="text-gray-600">{projet.description}</p>
+							<div className="flex gap-4 mt-2">
+								{projet.linkDemo && (
+								<a href={projet.linkDemo} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+									Voir la démo
+								</a>
+								)}
+								{projet.linkGitHub && (
+								<a href={projet.linkGitHub} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:underline">
+									Code source
+								</a>
+								)}
+							</div>
+						</div>
+					))}
+					</div>
+				</section>
+			</main>
+
+			<footer className="text-center py-6 mt-16 text-gray-500 text-sm">
+				© {new Date().getFullYear()} Théo Killian — Tous droits réservés.
+			</footer>
+		</>
+		);
 }
