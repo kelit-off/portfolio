@@ -1,24 +1,27 @@
 import { BiLogoVisualStudio } from "react-icons/bi";
 import TypingEffect from "./components/typingEffect";
-import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiReact, SiTypescript, SiVsco } from "react-icons/si";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript, SiVsco } from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
 	const cardLanguages = [
-		{ name: "JavaScript", icon: SiJavascript, color: "" },
-		{ name: "TypeScript", icon: SiTypescript, color: "" },
-		{ name: "React", icon: SiReact, color: "" },
-		{ name: "Node.js", icon: SiNodedotjs, color: "" },
-		{ name: "Laravel", icon: SiLaravel, color: "" },
-		{ name: "PHP", icon: SiPhp, color: ""},
-		{ name: "MySQL", icon: SiMysql, color: "" },
-	]
+		{ name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
+		{ name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
+		{ name: "React", icon: SiReact, color: "#61dafb" },
+		{ name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+		{ name: "Laravel", icon: SiLaravel, color: "#ff2d20" },
+		{ name: "PHP", icon: SiPhp, color: "#777BB4" },
+		{ name: "MySQL", icon: SiMysql, color: "#00758f" },
+		{ name: "Python", icon: SiPython, color: "#3776AB" }
+
+	];
+
 
 	const cardTools = [
-		{ name: "Visual Studio Code", icon: BiLogoVisualStudio, color: "" },
-		{ name: "PostMan", icon: SiPostman, color: ""},
-		{ name: "Git", icon: SiGit, color: "" },
-	]
+		{ name: "Visual Studio Code", icon: BiLogoVisualStudio, color: "#007ACC" }, // Bleu VSCode
+		{ name: "Postman", icon: SiPostman, color: "#FF6C37" },                     // Orange Postman
+		{ name: "Git", icon: SiGit, color: "#F05032" },                             // Orange Git
+	];
 
 	const cardProjets = [
 		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
@@ -41,7 +44,7 @@ export default function Home() {
 						<h1 className="text-4xl font-bold text-gray-900">Je suis <span className="uppercase text-blue-600">Théo Killian</span></h1>
 						<div className="text-lg text-gray-700">
 							<TypingEffect
-							texts={['Développeur FullStack', 'Développeur React', 'Développeur Laravel']}
+							texts={['Développeur FullStack', 'Développeur React', 'Développeur Laravel', 'Développeur PHP']}
 							typingSpeed={150}
 							deletingSpeed={150}
 							pauseTime={150}
@@ -50,7 +53,7 @@ export default function Home() {
 						</div>
 					</div>
 					<div className="w-1/2">
-					{/* Place ton image ici */}
+						{/* Image de moi entrain de dev */}
 					</div>
 				</section>
 
@@ -75,10 +78,11 @@ export default function Home() {
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 					{cardLanguages.map((language, index) => {
 						const Icon = language.icon;
+						console.log(language)
 						return (
 						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
-							<Icon className={"text-4xl text-["+language.color+"]"} />
-							<span className="text-sm font-medium text-gray-700">{language.name}</span>
+							<Icon className="text-4xl" style={{ color: language.color }} />
+							<span className="text-sm font-medium text-[gray-700]">{language.name}</span>
 						</div>
 						);
 					})}
@@ -93,7 +97,7 @@ export default function Home() {
 						const Icon = tool.icon;
 						return (
 						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
-							<Icon className="text-4xl text-orange-500" />
+							<Icon className="text-4xl" style={{ color: tool.color }} />
 							<span className="text-sm font-medium text-gray-700">{tool.name}</span>
 						</div>
 						);
