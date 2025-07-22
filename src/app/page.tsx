@@ -44,7 +44,7 @@ export default function Home() {
 						<h1 className="text-4xl font-bold text-gray-900">Je suis <span className="uppercase text-blue-600">Théo Killian</span></h1>
 						<div className="text-lg text-gray-700">
 							<TypingEffect
-							texts={['Développeur FullStack', 'Développeur React', 'Développeur Laravel', 'Développeur PHP']}
+							texts={["Développeur FullStack", "Développeur React", "Développeur Laravel", "Développeur PHP"]}
 							typingSpeed={150}
 							deletingSpeed={150}
 							pauseTime={150}
@@ -61,10 +61,10 @@ export default function Home() {
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Je me présente</h2>
 					<div className="space-y-4 text-gray-700">
-						<p>J'ai commencé la programmation vers l'âge de 15 ans...</p>
+						<p>J&apos;ai commencé la programmation vers l&apos;âge de 15 ans...</p>
 						<p>Pour approfondir mes compétences...</p>
 						<p>
-							Ce moteur de recherche s'appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
+							Ce moteur de recherche s&apos;appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
 							<a className="text-blue-500 hover:underline" href="https://github.com/orgs/Fulgure/repositories" target="_blank" rel="noreferrer">
 							GitHub
 							</a>.
