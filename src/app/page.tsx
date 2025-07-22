@@ -48,7 +48,6 @@ export default function Home() {
 							typingSpeed={150}
 							deletingSpeed={150}
 							pauseTime={150}
-							loop={true}
 							/>
 						</div>
 					</div>
