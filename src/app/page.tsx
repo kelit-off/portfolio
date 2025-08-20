@@ -27,6 +27,7 @@ export default function Home() {
 		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
 		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "", linkGitHub: "" },
 		{ name: "MVC" , image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
+		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert"}
 	]
 	return (
 		<>
