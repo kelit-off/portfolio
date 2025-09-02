@@ -25,7 +25,7 @@ export default function Home() {
 
 	const cardProjets = [
 		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
-		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "", linkGitHub: "" },
+		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "https://nxhost.fr", linkGitHub: "https://github.com/NxHostFR" },
 		{ name: "MVC" , image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
 		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert"}
 	]
@@ -107,7 +107,7 @@ export default function Home() {
 				{/* GitHub Calendar */}
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Mes jours de code</h2>
-					<GitHubCalendar username="kelit-off" blockSize={15} blockMargin={5} fontSize={16} />
+					<GitHubCalendar username="kelit-off" blockSize={15} blockMargin={5} fontSize={16} colorScheme="light" />
 				</section>
 
 				{/* Projets */}
