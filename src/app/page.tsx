@@ -10,8 +10,8 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export default function Home() {
-	const [success, setSuccess] = useState<boolean>(false);
-	const [error, setError] = useState<string | null>(null);
+	const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+	const [loading, setLoading] = useState(false);
 
 	const cardLanguages = [
 		{ name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
@@ -41,6 +41,8 @@ export default function Home() {
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+		setLoading(true);
+		setStatus("idle");
 
 		const form = e.currentTarget as HTMLFormElement;
 
@@ -53,11 +55,13 @@ export default function Home() {
 		const reponse = await axios.post("/api/contact", JSON.stringify(formData))
 
 		if (reponse.status == 200) {
-			setSuccess(true);
+			setStatus("success");
 			form.reset();
 		} else if (reponse.status == 500) {
-			setError(reponse.data.error);
+			setStatus("error");
 		}
+
+		setLoading(false);
 	}
 
 	return (
@@ -225,8 +229,12 @@ export default function Home() {
 								type="submit"
 								className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
 							>
-								Envoyer le message
+								{loading ? "Envoi..." : "Envoyer le message"}
 							</button>
+
+							{status === "success" && <p className="mt-4 text-green-600 text-center font-medium">Merci ! Votre message a été envoyé avec succès.</p>}
+							{status === "error" && <p className="mt-4 text-red-600 text-center font-medium">Oups ! Une erreur est survenue. Veuillez réessayer.</p>}
+
 						</form>
 
 						{/* Liens sociaux */}

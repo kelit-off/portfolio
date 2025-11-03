@@ -6,6 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
+    "deploy": "pm2 deploy ecosystem.config.js production",
     "lint": "next lint"
   },
   "dependencies": {
