@@ -1,6 +1,6 @@
 import { BiLogoVisualStudio } from "react-icons/bi";
 import TypingEffect from "./components/typingEffect";
-import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript, SiVsco } from "react-icons/si";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript} from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
 
 export default function Home() {
@@ -25,8 +25,9 @@ export default function Home() {
 
 	const cardProjets = [
 		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
-		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "", linkGitHub: "" },
+		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "https://nxhost.fr", linkGitHub: "https://github.com/NxHostFR" },
 		{ name: "MVC" , image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
+		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert"}
 	]
 	return (
 		<>
@@ -44,11 +45,10 @@ export default function Home() {
 						<h1 className="text-4xl font-bold text-gray-900">Je suis <span className="uppercase text-blue-600">Théo Killian</span></h1>
 						<div className="text-lg text-gray-700">
 							<TypingEffect
-							texts={['Développeur FullStack', 'Développeur React', 'Développeur Laravel', 'Développeur PHP']}
+							texts={["Développeur FullStack", "Développeur React", "Développeur Laravel", "Développeur PHP"]}
 							typingSpeed={150}
 							deletingSpeed={150}
 							pauseTime={150}
-							loop={true}
 							/>
 						</div>
 					</div>
@@ -61,10 +61,10 @@ export default function Home() {
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Je me présente</h2>
 					<div className="space-y-4 text-gray-700">
-						<p>J'ai commencé la programmation vers l'âge de 15 ans...</p>
+						<p>J&apos;ai commencé la programmation vers l&apos;âge de 15 ans...</p>
 						<p>Pour approfondir mes compétences...</p>
 						<p>
-							Ce moteur de recherche s'appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
+							Ce moteur de recherche s&apos;appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
 							<a className="text-blue-500 hover:underline" href="https://github.com/orgs/Fulgure/repositories" target="_blank" rel="noreferrer">
 							GitHub
 							</a>.
@@ -78,7 +78,6 @@ export default function Home() {
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 					{cardLanguages.map((language, index) => {
 						const Icon = language.icon;
-						console.log(language)
 						return (
 						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
 							<Icon className="text-4xl" style={{ color: language.color }} />
@@ -108,7 +107,7 @@ export default function Home() {
 				{/* GitHub Calendar */}
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-4">Mes jours de code</h2>
-					<GitHubCalendar username="kelit-off" blockSize={15} blockMargin={5} fontSize={16} />
+					<GitHubCalendar username="kelit-off" blockSize={15} blockMargin={5} fontSize={16} colorScheme="light" />
 				</section>
 
 				{/* Projets */}
