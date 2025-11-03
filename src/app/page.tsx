@@ -1,9 +1,18 @@
+"use client";
+
 import { BiLogoVisualStudio } from "react-icons/bi";
 import TypingEffect from "./components/typingEffect";
-import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript} from "react-icons/si";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript } from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { IoIosMail } from "react-icons/io";
+import axios from "axios";
+import { useState } from "react";
 
 export default function Home() {
+	const [success, setSuccess] = useState<boolean>(false);
+	const [error, setError] = useState<string | null>(null);
+
 	const cardLanguages = [
 		{ name: "JavaScript", icon: SiJavascript, color: "#f7df1e" },
 		{ name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
@@ -24,11 +33,33 @@ export default function Home() {
 	];
 
 	const cardProjets = [
-		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: ""},
+		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: "" },
 		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "https://nxhost.fr", linkGitHub: "https://github.com/NxHostFR" },
-		{ name: "MVC" , image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
-		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert"}
+		{ name: "MVC", image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
+		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert" }
 	]
+
+	const onSubmit = async (e) => {
+		e.preventDefault();
+
+		const form = e.target;
+
+		const formData = {
+			name: form.name.value,
+			email: form.email.value,
+			message: form.message.value,
+		}
+
+		const reponse = await axios.post("/api/contact", JSON.stringify(formData))
+
+		if(reponse.status == 200) {
+			setSuccess(true);
+			form.reset();
+		} else if (reponse.status == 500) {
+			setError(reponse.data.error);
+		}
+	}
+
 	return (
 		<>
 			<header className="shadow-md">
@@ -45,10 +76,10 @@ export default function Home() {
 						<h1 className="text-4xl font-bold text-gray-900">Je suis <span className="uppercase text-blue-600">Théo Killian</span></h1>
 						<div className="text-lg text-gray-700">
 							<TypingEffect
-							texts={["Développeur FullStack", "Développeur React", "Développeur Laravel", "Développeur PHP"]}
-							typingSpeed={150}
-							deletingSpeed={150}
-							pauseTime={150}
+								texts={["Développeur FullStack", "Développeur React", "Développeur Laravel", "Développeur PHP"]}
+								typingSpeed={150}
+								deletingSpeed={150}
+								pauseTime={150}
 							/>
 						</div>
 					</div>
@@ -66,7 +97,7 @@ export default function Home() {
 						<p>
 							Ce moteur de recherche s&apos;appelle <strong>Fulgure</strong>. Vous pouvez consulter le code sur{" "}
 							<a className="text-blue-500 hover:underline" href="https://github.com/orgs/Fulgure/repositories" target="_blank" rel="noreferrer">
-							GitHub
+								GitHub
 							</a>.
 						</p>
 					</div>
@@ -76,15 +107,15 @@ export default function Home() {
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes compétences</h2>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-					{cardLanguages.map((language, index) => {
-						const Icon = language.icon;
-						return (
-						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
-							<Icon className="text-4xl" style={{ color: language.color }} />
-							<span className="text-sm font-medium text-[gray-700]">{language.name}</span>
-						</div>
-						);
-					})}
+						{cardLanguages.map((language, index) => {
+							const Icon = language.icon;
+							return (
+								<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
+									<Icon className="text-4xl" style={{ color: language.color }} />
+									<span className="text-sm font-medium text-[gray-700]">{language.name}</span>
+								</div>
+							);
+						})}
 					</div>
 				</section>
 
@@ -92,15 +123,15 @@ export default function Home() {
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes outils</h2>
 					<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-					{cardTools.map((tool, index) => {
-						const Icon = tool.icon;
-						return (
-						<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
-							<Icon className="text-4xl" style={{ color: tool.color }} />
-							<span className="text-sm font-medium text-gray-700">{tool.name}</span>
-						</div>
-						);
-					})}
+						{cardTools.map((tool, index) => {
+							const Icon = tool.icon;
+							return (
+								<div key={index} className="bg-white p-4 rounded-2xl shadow-md flex flex-col items-center gap-2">
+									<Icon className="text-4xl" style={{ color: tool.color }} />
+									<span className="text-sm font-medium text-gray-700">{tool.name}</span>
+								</div>
+							);
+						})}
 					</div>
 				</section>
 
@@ -114,24 +145,118 @@ export default function Home() {
 				<section>
 					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Mes projets</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-					{cardProjets.map((projet, index) => (
-						<div key={index} className="bg-white p-6 rounded-2xl shadow-md space-y-3">
-							<h3 className="text-xl font-semibold text-gray-900">{projet.name}</h3>
-							<p className="text-gray-600">{projet.description}</p>
-							<div className="flex gap-4 mt-2">
-								{projet.linkDemo && (
-								<a href={projet.linkDemo} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-									Voir la démo
-								</a>
-								)}
-								{projet.linkGitHub && (
-								<a href={projet.linkGitHub} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:underline">
-									Code source
-								</a>
-								)}
+						{cardProjets.map((projet, index) => (
+							<div key={index} className="bg-white p-6 rounded-2xl shadow-md space-y-3">
+								<h3 className="text-xl font-semibold text-gray-900">{projet.name}</h3>
+								<p className="text-gray-600">{projet.description}</p>
+								<div className="flex gap-4 mt-2">
+									{projet.linkDemo && (
+										<a href={projet.linkDemo} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+											Voir la démo
+										</a>
+									)}
+									{projet.linkGitHub && (
+										<a href={projet.linkGitHub} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:underline">
+											Code source
+										</a>
+									)}
+								</div>
 							</div>
+						))}
+					</div>
+				</section>
+
+				{/* Contact */}
+				<section id="contact" className="py-10">
+					<h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+						Me contacter
+					</h2>
+					<p className="text-center text-gray-600 mb-8">
+						Une question, une collaboration, ou simplement envie d’échanger ?
+						N’hésite pas à m’écrire !
+					</p>
+
+					<div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-md">
+						<form
+						 	onSubmit={onSubmit} // ⚠️ remplace par ton lien Formspree ou endpoint perso
+							method="POST"
+							className="space-y-4"
+						>
+							<div>
+								<label htmlFor="name" className="block text-gray-700 mb-1">
+									Nom
+								</label>
+								<input
+									type="text"
+									id="name"
+									name="name"
+									required
+									className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+								/>
+							</div>
+
+							<div>
+								<label htmlFor="email" className="block text-gray-700 mb-1">
+									Adresse e-mail
+								</label>
+								<input
+									type="email"
+									id="email"
+									name="email"
+									required
+									className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+								/>
+							</div>
+
+							<div>
+								<label htmlFor="message" className="block text-gray-700 mb-1">
+									Message
+								</label>
+								<textarea
+									id="message"
+									name="message"
+									rows={5}
+									required
+									className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+								></textarea>
+							</div>
+
+							<button
+								type="submit"
+								className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+							>
+								Envoyer le message
+							</button>
+						</form>
+
+						{/* Liens sociaux */}
+						<div className="flex justify-center gap-6 mt-8 text-2xl text-gray-700">
+							<a
+								href="mailto:theo.killian@example.com"
+								className="hover:text-blue-600 transition"
+								title="Envoyer un e-mail"
+							>
+								<IoIosMail />
+							</a>
+							<a
+								href="https://github.com/kelit-off"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:text-gray-900 transition"
+								title="GitHub"
+							>
+								<FaGithub />
+							</a>
+							<a
+								href="https://www.linkedin.com/in/theo-killian"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="hover:text-blue-700 transition"
+								title="LinkedIn"
+							>
+								<FaLinkedin />
+							</a>
 						</div>
-					))}
 					</div>
 				</section>
 			</main>
@@ -140,5 +265,5 @@ export default function Home() {
 				© {new Date().getFullYear()} Théo Killian — Tous droits réservés.
 			</footer>
 		</>
-		);
+	);
 }
