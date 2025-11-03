@@ -11,7 +11,7 @@ export default function TypingEffect({
     texts,
     typingSpeed = 100,
     deletingSpeed = 50,
-    pauseTime = 2000,
+    pauseTime = 2000
 }: Props) {
     const [displayText, setDisplayText] = useState("");
     const [textIndex, setTextIndex] = useState(0);
