@@ -7,7 +7,7 @@ import GitHubCalendar from "react-github-calendar";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Home() {
 	const [success, setSuccess] = useState<boolean>(false);
@@ -39,20 +39,20 @@ export default function Home() {
 		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert" }
 	]
 
-	const onSubmit = async (e) => {
+	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const form = e.target;
+		const form = e.currentTarget as HTMLFormElement;
 
 		const formData = {
-			name: form.name.value,
-			email: form.email.value,
-			message: form.message.value,
-		}
+			name: (form.elements.namedItem("name") as HTMLInputElement).value,
+			email: (form.elements.namedItem("email") as HTMLInputElement).value,
+			message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+		};
 
 		const reponse = await axios.post("/api/contact", JSON.stringify(formData))
 
-		if(reponse.status == 200) {
+		if (reponse.status == 200) {
 			setSuccess(true);
 			form.reset();
 		} else if (reponse.status == 500) {
@@ -178,7 +178,7 @@ export default function Home() {
 
 					<div className="max-w-lg mx-auto bg-white p-8 rounded-2xl shadow-md">
 						<form
-						 	onSubmit={onSubmit} // ⚠️ remplace par ton lien Formspree ou endpoint perso
+							onSubmit={onSubmit} // ⚠️ remplace par ton lien Formspree ou endpoint perso
 							method="POST"
 							className="space-y-4"
 						>
