@@ -16,6 +16,14 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
 	title: "Théo Killian",
 	description: "Page de présentation de Théo Killian, un développeur React, Laravel et PHP",
+	metadataBase: new URL("https://theokillian.kitbase.fr"),
+	alternates: {
+		canonical: "/",
+	},
+	openGraph: {
+		url: "https://theokillian.kitbase.fr",
+		siteName: "Théo Killian",
+	},
 };
 
 export default function RootLayout({
