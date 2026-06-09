@@ -2,7 +2,7 @@
 
 import { BiLogoVisualStudio } from "react-icons/bi";
 import TypingEffect from "./components/typingEffect";
-import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript } from "react-icons/si";
+import { SiGit, SiJavascript, SiLaravel, SiMysql, SiNestjs, SiNodedotjs, SiPhp, SiPostman, SiPython, SiReact, SiTypescript } from "react-icons/si";
 import GitHubCalendar from "react-github-calendar";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
@@ -18,6 +18,7 @@ export default function Home() {
 		{ name: "TypeScript", icon: SiTypescript, color: "#3178c6" },
 		{ name: "React", icon: SiReact, color: "#61dafb" },
 		{ name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+		{ name: "NestJS", icon: SiNestjs, color: "#e0234e" },
 		{ name: "Laravel", icon: SiLaravel, color: "#ff2d20" },
 		{ name: "PHP", icon: SiPhp, color: "#777BB4" },
 		{ name: "MySQL", icon: SiMysql, color: "#00758f" },
@@ -33,10 +34,12 @@ export default function Home() {
 	];
 
 	const cardProjets = [
-		{ name: "Fulgure", image: "", description: "Moteur de recherche open source", linkDemo: "", linkGitHub: "" },
-		{ name: "NxHost", image: "", description: "Hébergement web open source", linkDemo: "https://nxhost.fr", linkGitHub: "https://github.com/NxHostFR" },
-		{ name: "MVC", image: "", description: "Modèle MVC en PHP", linkDemo: "", linkGitHub: "" },
-		{ name: "NxTransfert", image: "", description: "Un outil qui permet de transférer un fichier volumineux, avec un lien actif pendant 30 jours.", linkDemo: "https://nxtransfert.com/", linkGitHub: "https://github.com/kelit-off/NxTransfert" }
+		{ name: "Fulgure", image: "", description: "Moteur de recherche open source, rapide et respectueux de la vie privée — sans tracking, sans compromis.", linkDemo: "", linkGitHub: "" },
+		{ name: "NxHost", image: "", description: "Solution d'hébergement web open source pensée pour les développeurs : déploiement simple, performant et maîtrisé.", linkDemo: "", linkGitHub: "https://github.com/NxHostFR" },
+		{ name: "MVC", image: "", description: "Framework MVC maison en PHP pur — architecture propre, zéro dépendance, idéal pour comprendre les fondations du web.", linkDemo: "", linkGitHub: "" },
+		{ name: "NxTransfert", image: "", description: "Envoyez des fichiers volumineux en un clic. Lien sécurisé actif 30 jours, sans limite de taille.", linkDemo: "", linkGitHub: "https://github.com/kelit-off/NxTransfert" },
+		{ name: "Kitbase", image: "", description: "Plateforme d'hébergement nouvelle génération — déploiement automatisé, scalable et taillé pour les projets ambitieux.", linkDemo: "", linkGitHub: "" },
+		{ name: "Voxar", image: "", description: "Communication vocale en temps réel, fluide et légère — conçue pour les équipes qui veulent aller vite.", linkDemo: "", linkGitHub: "" }
 	]
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
