@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://theokillian.nxhost.fr
+
+# Sitemaps
+Sitemap: https://theokillian.nxhost.fr/sitemap.xml
