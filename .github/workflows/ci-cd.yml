@@ -74,7 +74,9 @@ jobs:
           chmod 600 $HOME/.kube/config
 
       - name: Apply manifests
-        run: kubectl apply -f k8s/
+        run: |
+          kubectl apply -f k8s/namespace.yaml
+          kubectl apply -f k8s/
 
       - name: Rollout new image
         run: |
